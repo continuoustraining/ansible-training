@@ -1,29 +1,17 @@
 ---
 - name: installation de gitlab
-  hosts: testing
+  hosts: web
   remote_user: ubuntu
   gather_facts: yes
-  become: yes
+  
   tasks:
     - name: installation des packages
       apt: 
         name: "{{packages}}"
-        update_cache: yes
+        ## update_cache: yes
         state: latest
       vars:
         packages:
         - curl
-        - openssh-server
-        - ca-certificates
-        - postfix
-
-    - name: Installation de gitlab repository
-      shell: sudo curl https://packages.gitlab.com/install/repositories/gitlab/gitlab-ee/script.deb.sh | sudo bash
-    - name: Setup Gitlab
-      shell: EXTERNAL_URL="http://gitlab.antoine.continuous.lu" sudo apt-get install gitlab-ee
-
-
-
-
-
-...
+        - git
+        - vim
