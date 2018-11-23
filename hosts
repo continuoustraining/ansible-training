@@ -1,0 +1,9 @@
+[ec2:vars]
+ansible_ssh_private_key_file=~/.ssh/ansible-training.pem
+ansible_python_interpreter=/usr/bin/python3
+[ec2]
+# To exclude RDS instances from the inventory, uncomment and set to False.
+rds = False
+
+# To exclude ElastiCache instances from the inventory, uncomment and set to False.
+elasticache = False
