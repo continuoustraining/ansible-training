@@ -22,8 +22,7 @@ Install Ansible...
 sudo yum install ansible
 ```
 
->[Ansible installation guide]
-(https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html)
+>[Ansible installation guide](https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html)
 
 ## Add our first host
 
