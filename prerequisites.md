@@ -35,6 +35,7 @@ Now you could spawn the hosts we will use for this training:
 vagrant up
 ```
 
+<<<<<<< HEAD
 > You could show the list of vagrant managed hosts like this :
 
 ```Shell
@@ -53,6 +54,10 @@ This environment represents multiple VMs. The VMs are all listed
 above with their current state. For more information about a specific
 VM, run `vagrant status NAME`.
 ```
+=======
+> You could show the list of vagrant managed hosts like this :</br>
+> `$ vagrant status`
+>>>>>>> master
 
 ## Connect your workstation
 

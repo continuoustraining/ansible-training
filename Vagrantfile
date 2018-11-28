@@ -41,9 +41,8 @@ Vagrant.configure(2) do |config|
     ansible_workstation.hostmanager.aliases = %w(ansible-workstation.vagrant.local ansible-workstation)
 
     $script=<<-EOF
-    echo 'Installing Ansible & GIT'
-    sudo yum install -y ansible git
-    sudo chown -R vagrant:vagrant /usr/share/ansible/roles/
+    echo 'Installing vim'
+    sudo yum install -y vim
     EOF
     ansible_workstation.vm.provision :shell, :inline => $script
   end
