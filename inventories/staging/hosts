@@ -1,7 +1,9 @@
-[web:vars]
-ansible_ssh_private_key_file=~/.ssh/ansible-training.pem
-ansible_python_interpreter=/usr/bin/python3
+[webserver]
+webserver.staging.vagrant.local
 
+[database]
+database.staging.vagrant.local
 
-[web]
-63.33.102.156
+[staging:children]
+webserver
+database

@@ -1,2 +1,9 @@
-[web]
-63.33.102.156
+[webserver]
+webserver.production.vagrant.local
+
+[database]
+database.production.vagrant.local
+
+[production:children]
+webserver
+database
