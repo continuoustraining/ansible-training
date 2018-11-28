@@ -1,9 +1,0 @@
-[webserver]
-webserver.production.vagrant.local
-
-[database]
-database.production.vagrant.local
-
-[production:children]
-webserver
-database
