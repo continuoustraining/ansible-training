@@ -1,0 +1,11 @@
+- hosts: webserver.dev
+  remote_user: vagrant
+  tasks:
+  - name: Ansible register variable basic example
+    shell: "ls -la"
+    args:
+      chdir: "/vagrant"
+    register: find_output
+  
+  - debug:
+      var: find_output.stdout_lines

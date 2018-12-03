@@ -11,6 +11,11 @@ Prérequis : Suivez les instructions [ici](prerequisites.md)
 1. Les fichiers de configuration
     1. Les inventaires
     1. Les commandes simples
+1. Les Modules
+    1. Introduction au Modules
+    1. Les retours des Modules
+    1. L’index de Modules
+    1. Développer des modules
 1. Les Playbooks
     1. Exemple de Playbook
     1. Les rôles et Inclusion
@@ -32,18 +37,13 @@ Prérequis : Suivez les instructions [ici](prerequisites.md)
     1. Gestion des erreurs
     1. Syntaxe avancée
     1. La délégation de tâches
-    1. ExplicationduZDD(ZeroDowntimeDeployment)
+    1. ExplicationduZDD (ZeroDowntimeDeployment)
     1. Lookups
     1. Examples
     1. Développer des filtres
     1. Tags
     1. Crypter les données avec Vault
     1. Les modes pour tester un Playbook ou le déboguer
-1. Les Modules
-    1. Introduction au Modules
-    1. Les retours des Modules
-    1. L’index de Modules
-    1. Développerdesmodules
 1. Ansible dans le pipeline de deploiement
     1. Les environnements dynamiques
     1. Les tests automatisés
