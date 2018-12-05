@@ -18,11 +18,11 @@ Prérequis : Suivez les instructions [ici](prerequisites.md)
     1. Développer des modules
 1. Les Playbooks
     1. Exemple de Playbook
-    1. Les rôles et Inclusion
     1. Les variables et Template Jinja2
     1. Les Conditions
     1. Les Loops
     1. Les blocks
+    1. Les rôles et Inclusion
     1. Les stratégies et bonne pratiques
 1. Playbooks avancé
     1. Escalade de privilèges

@@ -1,0 +1,69 @@
+---
+# tasks file for ./roles/apache
+- name: Installation des package
+  package: 
+    name: "httpd"
+
+- name: Wait for the reboot to complete if there was a change.
+  wait_for_connection:
+    connect_timeout: 20
+    sleep: 5
+    delay: 5
+    timeout: 300
+  when: selinux_result is changed
+
+- name: Activation du service httpd
+  service:
+    name: httpd
+    enabled: yes
+
+- name: Création des répertoires de vhosts
+  file: 
+    path: /var/www/{{domain}}/public_html
+    owner: root
+    group: root
+    state: directory
+
+- name: Définit les accès aux répertoire web par défaut
+  file:
+    path: /var/www
+    mode: 0755
+    state: directory
+
+- name: Création de la home page
+  template:
+    src: files/index.html
+    dest: /var/www/{{domain}}/public_html/index.html
+
+- name: Création du répertoire 'sites-available'
+  file:
+    path: /etc/httpd/sites-available
+    state: directory
+
+- name: Création du répertoire 'sites-enabled'
+  file:
+    path: /etc/httpd/sites-enabled
+    state: directory
+
+- name: Ajout de l'inclusion optionelle de 'sites-enabled'
+  lineinfile: 
+    path: /etc/httpd/conf/httpd.conf
+    insertafter: EOF
+    line: 'IncludeOptional sites-enabled/*.conf'
+  notify:
+    - restart httpd
+
+- name: Création du fichier hosts
+  template:
+    src: files/vhost.conf
+    dest: /etc/httpd/sites-available/{{domain}}.conf
+  notify:
+    - restart httpd
+
+- name: Activation du serveur virtuel
+  file: 
+    src: /etc/httpd/sites-available/{{domain}}.conf 
+    dest: /etc/httpd/sites-enabled/{{domain}}.conf
+    state: link
+  notify:
+    - restart httpd

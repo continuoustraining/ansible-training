@@ -2,7 +2,7 @@
 # vi: set ft=ruby :
 
 Vagrant.configure(2) do |config|
-  config.vm.box = "centos/7"
+  config.vm.box = "cosm/centos7"
 
   config.vbguest.auto_update = true
 
@@ -34,13 +34,13 @@ Vagrant.configure(2) do |config|
   end
 
   boxes = {
-    "ansible_workstation" => { :hostname => "ansible.workstation",  :memory => 1024, :workstation => true },
-    "webserver1_dev"      => { :hostname => "webserver1.dev",       :memory => 512  },
-    "webserver2_dev"      => { :hostname => "webserver2.dev",       :memory => 512  },
-    "database_dev"        => { :hostname => "database.dev",         :memory => 512  },
-    "webserver1_prod"     => { :hostname => "webserver1.prod",      :memory => 512  },
-    "webserver2_prod"     => { :hostname => "webserver2.prod",      :memory => 512  },
-    "database_prod"       => { :hostname => "database.prod",        :memory => 512  }
+    "ansible_workstation" => { :hostname => "ansible.workstation",  :memory => 512, :workstation => true },
+    "webserver1_dev"      => { :hostname => "webserver1.dev",       :memory => 256  },
+    "webserver2_dev"      => { :hostname => "webserver2.dev",       :memory => 256  },
+    "database_dev"        => { :hostname => "database.dev",         :memory => 256  },
+    "webserver1_prod"     => { :hostname => "webserver1.prod",      :memory => 256  },
+    "webserver2_prod"     => { :hostname => "webserver2.prod",      :memory => 256  },
+    "database_prod"       => { :hostname => "database.prod",        :memory => 256  }
   }
 
   boxes.each do |node_name, info|

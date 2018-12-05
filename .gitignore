@@ -1,3 +1,5 @@
 .vscode
 .vagrant
+.idea
 log
+**/*.retry
