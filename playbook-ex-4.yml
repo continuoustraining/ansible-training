@@ -1,0 +1,24 @@
+- hosts: all
+  remote_user: vagrant
+  tasks:
+    - name: Test d'un Block
+      block:
+        - name: Affiche les adresses ip
+          debug:
+            msg: "{{'Adresse ipv4 n°%d : %s'|format(item_idx, item)}}"
+          loop: "{{ansible_all_ipv4_addresses}}"
+          loop_control:
+            index_var: item_idx
+        - name: Fail task when the command error output prints FAILED
+          command: /usr/bin/echo "FAILED for some reason"
+          register: command_result
+          failed_when: "'FAILED' in command_result.stdout"
+        - name: Test d'erreur
+          command: '/bin/false'
+          ignore_errors: no
+      rescue:
+        - debug:
+            msg: "Erreur !!"
+      always:
+        - debug:
+            msg: "Je suis toujours joué !"

@@ -1,0 +1,15 @@
+
+
+[webserver]
+webserver1.prod
+webserver2.prod
+
+[database]
+database.prod
+
+[site:children]
+webserver
+database
+
+[all:vars]
+ansible_user=vagrant
