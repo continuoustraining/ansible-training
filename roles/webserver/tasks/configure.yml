@@ -1,0 +1,56 @@
+---
+# tasks file for ./roles/webserver
+- name: Add vhost dir
+  file: 
+    path: /var/www/{{domain}}/public_html
+    owner: root
+    group: root
+    state: directory
+
+- name: Define dir with rights
+  file:
+    path: /var/www
+    mode: 0755
+    state: directory
+
+- name: Create home page
+  template:
+    src: index.html
+    dest: /var/www/{{domain}}/public_html/index.html
+
+- name: Add available sites dir
+  file: 
+    path: /etc/httpd/sites-available
+    owner: root
+    group: root
+    state: directory
+
+- name: Add enabled sites dir
+  file: 
+    path: /etc/httpd/sites-enabled
+    owner: root
+    group: root
+    state: directory
+    
+- name: Add sites-enabled into httpd conf
+  lineinfile: 
+    path: /etc/httpd/conf/httpd.conf
+    insertafter: EOF
+    line: 'IncludeOptional sites-enabled/*.conf'
+  notify:
+    - restart httpd
+
+- name: Create virtual host
+  template:
+    src: vhost.conf
+    dest: /etc/httpd/sites-available/{{domain}}.conf
+  notify:
+    - restart httpd
+
+- name: Activate virtual host
+  file: 
+    src: /etc/httpd/sites-available/{{domain}}.conf 
+    dest: /etc/httpd/sites-enabled/{{domain}}.conf
+    state: link
+  notify:
+    - restart httpd

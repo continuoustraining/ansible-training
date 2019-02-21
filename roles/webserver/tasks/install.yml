@@ -1,0 +1,14 @@
+---
+# tasks file for ./roles/webserver
+- name: Install httpd
+  package: 
+    name: "{{packages}}"
+  vars:
+    packages:
+      - httpd
+      - vim
+
+- name: Activate httpd apache
+  service:
+    name: httpd
+    enabled: yes

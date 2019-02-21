@@ -1,5 +1,7 @@
 [webservers]
 webserver.dev
+webserver.staging
+webserver.production
 
 [databases]
 database.dev
