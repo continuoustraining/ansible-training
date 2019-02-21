@@ -1,0 +1,8 @@
+[webservers]
+webserver.dev
+
+[databases]
+database.dev
+
+[CI]
+jenkins.dev

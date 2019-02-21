@@ -2,7 +2,6 @@
   become: yes
   vars:
     http_port: 80
-    domain: webserver.dev.vagrant.local
   tasks:
     - name: Install httpd
       package: 
